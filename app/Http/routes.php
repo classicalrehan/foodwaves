@@ -178,8 +178,29 @@ Route::get('login/fb/callback', function() {
 
     $me = $facebook->api('/me');
 
-    echo "<pre>";
-        print_r($me);
-    echo "</pre>";
-    //dd($me);
+    $profile = Profile::whereUid($uid)->first();
+    if (empty($profile)) {
+
+        $user = new User;
+        $user->name = $me['first_name'].' '.$me['last_name'];
+        $user->email = $me['email'];
+        $user->photo = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
+
+        $user->save();
+
+        $profile = new Profile();
+        $profile->uid = $uid;
+        $profile->username = $me['username'];
+        $profile = $user->profiles()->save($profile);
+    }
+
+    $profile->access_token = $facebook->getAccessToken();
+    $profile->save();
+
+    $user = $profile->user;
+
+    Auth::login($user);
+
+    return Redirect::to('/')->with('message', 'Logged in with Facebook');
 });
+

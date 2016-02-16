@@ -305,6 +305,23 @@ class CategoryController extends Controller
 			return redirect('category/edit/'.$request->id)->with('error','error in deleting category updation');
 		}
     }
+
+    public function getFilterCategory($parent){
+    	
+
+    	$query = DB::table('category as c1');
+        $query->Join('category as c2', 'c1.is_parent', '=', 'c2.id');
+        $query->leftJoin('product_category as pc', 'pc.cat_id', '=', 'c1.id');
+        if(!empty($parent)){
+        	$query->where('c2.slug',$parent);	
+        }	
+        $query->groupBy('pc.cat_id');
+		$query->select('c1.id as ChildID', 'c1.name as ChildName', 'c1.slug as ChildSlug', 'c2.id as ParentID', 'c2.name as ParentName', 'c2.slug as ParentSlug',DB::raw('count(pc.pro_id) as TotalProduct'));
+        $category = $query->get();
+        return $category;
+
+    }
+
     public function slugify($text)
 	{ 
 	  // replace non letter or digits by -

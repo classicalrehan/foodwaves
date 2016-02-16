@@ -5,8 +5,8 @@
       <div class="row">
         <div class="col-xs-12">
         <div class="page-title">
-<h2>Shopping Cart</h2>
-</div>
+			<h2>Shopping Cart</h2>
+		</div>
         </div>
       </div>
     </div>
@@ -65,7 +65,7 @@
 				<tr id="{!! $c['cart_id'] !!}" class="<?php echo ($count==1 ? "first":"");?> <?php echo ($count==$length ? "last":"");?> <?php echo ($count %2==0? "odd":"even");?>">
 					<td class="image hidden-table">
 						<a href="product-detail.html" title="Women&#39;s Georgette Animal Print" class="product-image">
-						{!! Html::image('web/products-images/p8.jpg','Women&#39;s Georgette Animal Print',array('width'=>'75')) !!}
+						{!! Html::image($c['image'],$c['name'],array('width'=>'75')) !!}
 						</a>
 					</td>
 					<td>

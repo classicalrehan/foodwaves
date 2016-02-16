@@ -23,6 +23,9 @@
 {!! Html::style('web/stylesheet/style.css') !!}
 {!! Html::style('web/stylesheet/responsive.css') !!}
 {!! Html::style('web/stylesheet/flexslider.css') !!}
+{!! Html::style('admintheme/plugins/ionslider/ion.rangeSlider.css') !!}
+{!! Html::style('admintheme/plugins/ionslider/ion.rangeSlider.skinNice.css') !!}
+{!! Html::style('admintheme/plugins/bootstrap-slider/slider.css') !!}
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700,800' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -71,16 +74,16 @@
                               <li class="level3 nav-6-1 parent item"> <a href="{!! url('products/?parent-cat=breakfast&child-cat=paratha') !!}"><span>Paratha</span></a>
                                 <!--sub sub category-->
                                 <ul class="level1">
-                                  <li class="level2 nav-6-1-1"> <a href="{!! url('products/?parent-cat=breakfast&child-cat=paratha&product=aaloo-paratha') !!}"><span>Aaloo Paratha
+                                  <li class="level2 nav-6-1-1"> <a href="{!! url('product/details/7') !!}"><span>Aaloo Paratha
 </span></a> </li>
                                   <!--level2 nav-6-1-1-->
-                                  <li class="level2 nav-6-1-1"> <a href="{!! url('products/?parent-cat=breakfast&child-cat=paratha&product=aaloo-pyaj-paratha') !!}"><span>Aaloo Pyaj Paratha</span></a> </li>
+                                  <li class="level2 nav-6-1-1"> <a href="{!! url('product/details/8') !!}"><span>Aaloo Pyaj Paratha</span></a> </li>
                                   <!--level2 nav-6-1-1-->
-                                  <li class="level2 nav-6-1-1"> <a href="{!! url('products/?parent-cat=breakfast&child-cat=paratha&product=mix-paratha') !!}"><span>Mix Paratha</span></a> </li>
+                                  <li class="level2 nav-6-1-1"> <a href="{!! url('product/details/9') !!}"><span>Mix Paratha</span></a> </li>
                                   <!--level2 nav-6-1-1-->
-                                  <li class="level2 nav-6-1-1"> <a href="{!! url('products/?parent-cat=breakfast&child-cat=paratha&product=onion-paratha') !!}"><span>Onion Paratha</span></a> </li>
-                                  <li class="level2 nav-6-1-1"> <a href="{!! url('products/?parent-cat=breakfast&child-cat=paratha&product=moooli-paratha') !!}"><span>Mooli Partah</span></a> </li>
-                                  <li class="level2 nav-6-1-1"> <a href="{!! url('products/?parent-cat=breakfast&child-cat=paratha&product=gobi-paratha') !!}"><span>Gobhi Partha</span></a> </li>
+                                  <li class="level2 nav-6-1-1"> <a href="{!! url('product/details/10') !!}"><span>Onion Paratha</span></a> </li>
+                                  <li class="level2 nav-6-1-1"> <a href="{!! url('product/details/11') !!}"><span>Mooli Partah</span></a> </li>
+                                  <li class="level2 nav-6-1-1"> <a href="{!! url('product/details/12') !!}"><span>Gobhi Partha</span></a> </li>
                                   <!--level2 nav-6-1-1-->
                                 </ul>
                                 <!--level1-->
@@ -90,11 +93,11 @@
                               <li class="level3 nav-6-1 parent item"> <a href="{!! url('products/?parent-cat=breakfast&child-cat=sandwiche') !!}"><span>Sandwich</span></a>
                                 <!--sub sub category-->
                                 <ul class="level1">
-                                  <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Potaoto Sandwich</span></a> </li>
+                                  <li class="level2 nav-6-1-1"> <a href="{!! url('product/details/19') !!}"><span>Potaoto Sandwich</span></a> </li>
                                   <!--level2 nav-6-1-1-->
-                                  <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Cheese Sandwich</span></a> </li>
+                                  <li class="level2 nav-6-1-1"> <a href="{!! url('product/details/20') !!}"><span>Cheese Sandwich</span></a> </li>
                                   <!--level2 nav-6-1-1-->
-                                  <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Veg Grilled Sandwich</span></a> </li>
+                                  <li class="level2 nav-6-1-1"> <a href="{!! url('product/details/21') !!}"><span>Veg Grilled Sandwich</span></a> </li>
                                   <!--level2 nav-6-1-1-->
                                 </ul>
                                 <!--level1-->
@@ -620,8 +623,7 @@
                 @foreach($cart['cartItem'] as $cart)
 					<li class="item first" id="{!! $cart['cart_id'] !!}">
 					  <div class="item-inner"><a class="product-image" title="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" href="#l">
-
-            <img src="{!! url('imageupload/server/product/files/') !!}{!! $cart['image'] !!}"/>
+              {!! Html::image($cart['image'],$cart['name'],array()) !!}
 					  </a>
 						<div class="product-details">
 						  <div class="access"><a class="btn-remove1" onClick="return removeItemFromCart({!! $cart['cart_id'] !!});" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>

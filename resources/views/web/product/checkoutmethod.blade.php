@@ -25,7 +25,7 @@
             <li id="opc-login" class="section allow active">
                 <div class="step-title"> 
                              
-                    <h3 class="one_page_heading">  Checkout Method</h3>
+                    <h3 class="one_page_heading" onClick="shoppingCart.checkoutMethodHeading();">  Checkout Method</h3>
                 </div>
                 <div id="checkout-step-login" class="step a-item">
 
@@ -51,7 +51,7 @@
 
                             <div class="buttons-set1">
                                 <p class="required">&nbsp;</p>
-                                <button id="onepage-guest-register-button" type="button" class="button continue" onClick="return checkout();"><span><span>Continue</span></span></button>
+                                <button id="onepage-guest-register-button" type="button" class="button continue" onClick="shoppingCart.checkoutMethodButton();"><span><span>Continue</span></span></button>
                             </div>
 
 
@@ -102,17 +102,17 @@
             {!! Form::open(array('url' => '/order/store','method'=>'post', 'files'=>true)) !!}
                 <li id="opc-shipping" class="section">
                     <div class="step-title"> 
-                        <h3 class="one_page_heading">  Shipping Information</h3>
+                        <h3 class="one_page_heading" onClick="shoppingCart.shippingInformationHeading();">  Shipping Information</h3>
                     </div>
                     <?php 
                      $class = "";
-                    if(Auth::user()){
-                        $class = "";
+                    if(!Auth::user()){
+                        $class = "hide-container";
                     }else{
                         //$class = "style='display:none;'";
                     }
                      ?>
-                    <div id="checkout-step-shipping" class="step a-item" <?php echo $class;?>>
+                    <div id="checkout-step-shipping" class="step a-item <?php echo $class;?>" >
                             <ul class="">
                                 <li id="shipping-new-address-form">
                                     <fieldset class="group-select">
@@ -135,7 +135,21 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                           
+                                            <li class="fields">
+                                                    
+                                                    <div class="input-box">
+                                                        <label for="shipping:telephone">Email<span class="required">*</span></label>
+
+                                                        <input type="email" name="shipping[telephone]" value="" title="Telephone" class="input-text  required-entry" id="shipping:telephone" onChange="shipping.setSameAsBilling(false);">
+
+                                                    </div>
+                                                    <div class="input-box">
+                                                        <label for="shipping:telephone">Mobile<em class="required">*</em></label>
+
+                                                        <input type="text" name="shipping[mobile]" value="" title="Telephone" class="input-text  required-entry" id="shipping:telephone" onChange="shipping.setSameAsBilling(false);">
+
+                                                    </div>
+                                                </li>
                                             <li class="wide">
                                                 <label for="shipping:street1">Address<em class="required">*</em></label><br>
 
@@ -157,59 +171,54 @@
 
                                                     </div>
                                                 </li>
-                                                <li class="fields">
-                                                    
-                                                    <div class="input-box">
-                                                        <label for="shipping:telephone">Telephone</label>
-
-                                                        <input type="text" name="shipping[telephone]" value="" title="Telephone" class="input-text  required-entry" id="shipping:telephone" onChange="shipping.setSameAsBilling(false);">
-
-                                                    </div>
-                                                    <div class="input-box">
-                                                        <label for="shipping:telephone">Mobile<em class="required">*</em></label>
-
-                                                        <input type="text" name="shipping[mobile]" value="" title="Telephone" class="input-text  required-entry" id="shipping:telephone" onChange="shipping.setSameAsBilling(false);">
-
-                                                    </div>
-                                                </li>
+                                               
                                                
                                             </ul>
                                         </fieldset>
                                     </li>
                                 </ul>
+                                <div class="buttons-set1">
+                                    <p class="required">&nbsp;</p>
+                                    <button id="onepage-guest-register-button" type="button" class="button continue" onClick="shoppingCart.shippingInformationButton();"><span><span>Continue</span></span></button>
+                                </div>
                             </div>
+
                         </li>
                         <li id="opc-shipping_method" class="section">
                             <div class="step-title"> 
        
-                                <h3 class="one_page_heading">  Shipping Method</h3>
+                                <h3 class="one_page_heading" onClick="shoppingCart.shippingMethodHeading();">  Shipping Method</h3>
                             </div>
-                            <div id="checkout-step-shipping_method" class="step a-item" <?php echo $class;?>>
+                            <div id="checkout-step-shipping_method" class="step a-item <?php echo $class;?>">
                                 <div id="checkout-shipping-method-load">
                                     <h6 class="one_page_heading"> Free Shipping</h6>
                                        <ul>
                                            <li> 
-                                            <input  type="radio" name="shipping[shippingCharge]" id="shipping:same_as_billing" value="0" title="Use Billing Address"  class="checkbox"> <label for="shipping:same_as_billing">Free Rs.0.00</label>
+                                            <input  type="radio" name="shipping[shippingCharge]" id="shipping:same_as_billing" value="0" title="Use Billing Address"  class="checkbox" checked> <label for="shipping:same_as_billing">Free Rs.0.00</label>
                                             </li>
                                             <li> 
                                             <input  type="radio" name="shipping[shippingCharge]" id="shipping:same_as_billing" value="50" title="Use Billing Address"  class="checkbox"> <label for="shipping:same_as_billing">Flat Rs.50.00</label>
                                             </li>
                                         </ul>
                                     </div>
+                                    <div class="buttons-set1">
+                                        <p class="required">&nbsp;</p>
+                                        <button id="onepage-guest-register-button" type="button" class="button continue" onClick="shoppingCart.shippingMethodButton();"><span><span>Continue</span></span></button>
+                                    </div>
                                 </div>
                             </li> 
                             <li id="opc-payment" class="section">
                                 <div class="step-title"> 
          
-                                    <h3 class="one_page_heading">  Payment Information</h3>
+                                    <h3 class="one_page_heading" onClick="shoppingCart.paymentInformationHeading();">  Payment Information</h3>
                                 </div>
-                                <div id="checkout-step-payment" class="step a-item" <?php echo $class;?>>
+                                <div id="checkout-step-payment" class="step a-item <?php echo $class;?>" >
 
                                     <fieldset>
                                         <dl class="sp-methods" id="checkout-payment-method-load">
                                             <ul>
                                                <li> 
-                                                <input  type="radio" name="shipping[paymentMethod]" id="shipping:same_as_billing" value="paypal" title="Use Billing Address"  class="checkbox"> <label for="shipping:same_as_billing"> Paypal</label>
+                                                <input  type="radio" name="shipping[paymentMethod]" id="shipping:same_as_billing" value="paypal" title="Use Billing Address"  class="checkbox" checked> <label for="shipping:same_as_billing"> Paypal</label>
                                                 </li>
                                                 <li> 
                                                 <input  type="radio" name="shipping[paymentMethod]" id="shipping:same_as_billing" value="cod" title="Use Billing Address"  class="checkbox"> <label for="shipping:same_as_billing"> COD</label>
@@ -217,14 +226,18 @@
                                             </ul>
                                          </dl>
                                      </fieldset>
+                                     <div class="buttons-set1">
+                                        <p class="required">&nbsp;</p>
+                                        <button id="onepage-guest-register-button" type="button" class="button continue" onClick="shoppingCart.paymentInformationButton();"><span><span>Continue</span></span></button>
+                                    </div>
                                 </div>
                             </li>
                             <li id="opc-review" class="section">
                                 <div class="step-title"> 
          
-                                    <h3 class="one_page_heading">  Order Review</h3>
+                                    <h3 class="one_page_heading" onClick="shoppingCart.orderOverviewHeading();">  Order Review</h3>
                                 </div>
-                                <div id="checkout-step-review" class="step a-item" >
+                                <div id="checkout-step-review" class="step a-item <?php echo $class;?>" >
                                     <div class="order-review" id="checkout-review-load">
                                        <div class="recent-orders">
                 
@@ -288,13 +301,12 @@
                                             <!--table-responsive-->                 
                                           </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                 <div class="buttons-set" id="payment-buttons-container">
+                                    <div class="buttons-set" id="payment-buttons-container">
                                     <button type="submit" class="button continue"><span>Place Order</span></button>
                                     </div>
+                                </div>
                             </li>
+                            
                             {!! Form::close() !!}
                         </ol>
 
@@ -369,4 +381,5 @@
             </div>
         </div>
 
-        @include('web.common.footer');
+        @include('web.common.footer')
+        {!! Html::script('web/js/cart.js') !!}

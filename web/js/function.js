@@ -134,9 +134,11 @@ function HideMe()
 		}
 	}
 	function checkout(){
-		/*if(jQuery('.radio').is(':checked')) { 
-		 	alert("it's checked"); 
-		}else{
-			alert("Please choose Checkout as a Guest or Register")
-		}*/
+		/*jQuery(".a-item").addClass("hide-container");
+		jQuery("#checkout-step-shipping").removeClass("hide-container");*/
+		
+	}
+	function showContainer(id){
+		jQuery(".a-item").addClass("hide-container");
+		jQuery('#'+id).show();
 	}

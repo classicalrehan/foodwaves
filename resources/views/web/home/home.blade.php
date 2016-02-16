@@ -105,7 +105,7 @@
 				<div class="item" id="{!! $cat['id'] !!}">
 				  <div class="pro-img">
 					{!! Html::image('imageupload/server/category/files/'.$cat['image'],'menu_image')!!}
-					<div class="pro-info">{!! $cat['name'] !!}</div>
+					<div class="pro-info"><a href="{!! url('products/')!!}?parent={!! $cat['slug']!!}">{!! $cat['name'] !!}</a></div>
 				  </div>
 				</div>
 
@@ -142,8 +142,8 @@
 			<div class="item-inner">
 			  <div class="item-img">
 				<div class="item-img-info"><a href="#" title="Retis lapen casen" class="product-image">
-				{!! Html::image('web/products-images/p1.jpg','Retis lapen casen test ')!!}</a>
-				  <div class="new-label new-top-left">{!! $pro['name'] !!}</div>
+				{!! Html::image('imageupload/server/product/files/'.$pro['image']) !!}</a>
+				  <div class="new-label new-top-left">New</div>
 				  <div class="item-box-hover">
 					<div class="box-inner">
 					  <div class="product-detail-bnt"><a class="button detail-bnt" title="Quick View"><span>Quick View</span></a></div>

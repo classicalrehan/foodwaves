@@ -18,7 +18,7 @@
       <!--container-->
     </div>
     <div class="page-title">
-      <h2>Cappon Magro</h2>
+      <h2>{!! $product['name'] !!}</h2>
     </div>
   </div>
   <!-- BEGIN Main Container -->
@@ -31,17 +31,16 @@
           <!--product-next-prev-->
           <div class="product-essential container">
             <div class="row">
-              <div class="product-next-prev"> <a class="product-next" title="Next" href="#"><span></span></a> <a class="product-prev" title="Previous" href="#"><span></span></a> </div>
               <form action="" method="post" id="product_addtocart_form">
                 <!--End For version 1, 2, 6 -->
                 <!-- For version 3 -->
                 <div class="product-img-box col-sm-6 col-xs-12">
                   <div class="new-label new-top-left"> New </div>
                   <div class="product-image">
-                    <div class="large-image"> <a href="{!! url('web/products-images/p15.jpg')!!}" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> 
-					{!! Html::image('web/products-images/p15.jpg','Flavours Store')!!}
+                    <div class="large-image"> <a href="{!! url('imageupload/server/product/files/'.$images[0]->name)!!}" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> 
+					             {!! Html::image('imageupload/server/product/files/'.$images[0]->name,'Flavours Store')!!}
 					 </a> </div>
-                    <div class="flexslider flexslider-thumb">
+                    <!-- <div class="flexslider flexslider-thumb">
                       <ul class="previews-list slides">
                         <li><a href='{!! url("web/products-images/p15.jpg")!!}' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '{!! url("web/products-images/p15.jpg") !!}' ">
 						{!! Html::image('web/products-images/p15.jpg','Flavours Store')!!}
@@ -54,7 +53,7 @@
                         <li><a href='{!! url("web/products-images/p8.jpg")!!}' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '{!! url("web/products-images/p8.jpg") !!}' ">{!! Html::image('web/products-images/p8.jpg','Flavours Store')!!}</a></li>
                         <li><a href='{!! url("web/products-images/p10.jpg")!!}' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '{!! url("web/products-images/p10.jpg") !!}' ">{!! Html::image('web/products-images/p10.jpg','Flavours Store')!!}</a></li>
                       </ul>
-                    </div>
+                    </div> -->
                   </div>
                   <!-- end: more-images -->
                 </div>
@@ -378,262 +377,7 @@
             </div>
           </div>
      
-      
-          <!--product-collateral-->
-          <div class="box-additional">
-            <!-- BEGIN RELATED PRODUCTS -->
-            <div class="related-pro container">
-              <div class="slider-items-products">
-                <div class="new_title center">
-                  <h2>Related Products</h2>
-                </div>
-                <div id="related-slider" class="product-flexslider hidden-buttons">
-                  <div class="slider-items slider-width-col4 products-grid">
-          <div class="item">
-                            <div class="item-inner">
-                              <div class="item-img">
-                                <div class="item-img-info"><a href="product-detail.html" title="Retis lapen casen" class="product-image">{!! Html::image('web/products-images/p15.jpg','Flavours Store')!!}</a>
-                                  <div class="new-label new-top-left">New</div>
-                                  <div class="item-box-hover">
-                                    <div class="box-inner">
-                                      <div class="product-detail-bnt"><a class="button detail-bnt" type="button"><span>Quick View</span></a></div>
-                                      <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> </span> </div>
-                                      
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="item-info">
-                                <div class="info-inner">
-                                  <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">Retis lapen casen</a> </div>
-                                  <div class="item-content">
-                                    <div class="rating">
-                                      <div class="ratings">
-                                        <div class="rating-box">
-                                          <div class="rating" style="width:80%"></div>
-                                        </div>
-                                        <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                      </div>
-                                    </div>
-                                    <div class="item-price">
-                                      <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">$125.00</span> </span> </div>
-                                    </div>
-									<div class="add_cart">
-                                        <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                      </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
           
-          <!-- Item -->
-          <div class="item">
-                            <div class="item-inner">
-                              <div class="item-img">
-                                <div class="item-img-info"><a href="product-detail.html" title="Retis lapen casen" class="product-image">{!! Html::image('web/products-images/p15.jpg','Flavours Store')!!}</a>
-                                  <div class="new-label new-top-left">New</div>
-                                  <div class="item-box-hover">
-                                    <div class="box-inner">
-                                      <div class="product-detail-bnt"><a class="button detail-bnt" type="button"><span>Quick View</span></a></div>
-                                      <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> </span> </div>
-                                      
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="item-info">
-                                <div class="info-inner">
-                                  <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">Retis lapen casen</a> </div>
-                                  <div class="item-content">
-                                    <div class="rating">
-                                      <div class="ratings">
-                                        <div class="rating-box">
-                                          <div class="rating" style="width:80%"></div>
-                                        </div>
-                                        <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                      </div>
-                                    </div>
-                                    <div class="item-price">
-                                      <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">$125.00</span> </span> </div>
-                                    </div>
-									<div class="add_cart">
-                                        <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                      </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-          <!-- End Item --> 
-          
-          <!-- Item -->
-          <div class="item">
-                            <div class="item-inner">
-                              <div class="item-img">
-                                <div class="item-img-info"><a href="product-detail.html" title="Retis lapen casen" class="product-image">
-								{!! Html::image('web/products-images/p3.jpg','Flavours Store')!!}
-								</a>
-                                  <div class="sale-label sale-top-left">Sale</div>
-                                  <div class="item-box-hover">
-                                    <div class="box-inner">
-                                      <div class="product-detail-bnt"><a class="button detail-bnt" type="button"><span>Quick View</span></a></div>
-                                      <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="item-info">
-                                <div class="info-inner">
-                                  <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">Retis lapen casen</a> </div>
-                                  <div class="item-content">
-                                    <div class="rating">
-                                      <div class="ratings">
-                                        <div class="rating-box">
-                                          <div class="rating" style="width:80%"></div>
-                                        </div>
-                                        <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                      </div>
-                                    </div>
-                                    <div class="item-price">
-                                      <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">$125.00</span> </span> </div>
-                                    </div>
-									<div class="add_cart">
-                                        <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                      </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-          <!-- End Item -->
-          
-          <div class="item">
-                            <div class="item-inner">
-                              <div class="item-img">
-                                <div class="item-img-info"><a href="product-detail.html" title="Retis lapen casen" class="product-image">{!! Html::image('web/products-images/p4.jpg','Flavours Store')!!}</a>
-                                  <div class="new-label new-top-left">New</div>
-                                  <div class="item-box-hover">
-                                    <div class="box-inner">
-                                      <div class="product-detail-bnt"><a class="button detail-bnt" type="button"><span>Quick View</span></a></div>
-                                      <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="item-info">
-                                <div class="info-inner">
-                                  <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">Retis lapen casen</a> </div>
-                                  <div class="item-content">
-                                    <div class="rating">
-                                      <div class="ratings">
-                                        <div class="rating-box">
-                                          <div class="rating" style="width:80%"></div>
-                                        </div>
-                                        <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                      </div>
-                                    </div>
-                                    <div class="item-price">
-                                      <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">$125.00</span> </span> </div>
-                                    </div>
-									<div class="add_cart">
-                                        <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                      </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-          
-          <!-- Item -->
-          <div class="item">
-                            <div class="item-inner">
-                              <div class="item-img">
-                                <div class="item-img-info"><a href="product-detail.html" title="Retis lapen casen" class="product-image">{!! Html::image('web/products-images/p15.jpg','Flavours Store')!!}</a>
-                                  <div class="new-label new-top-left">New</div>
-                                  <div class="item-box-hover">
-                                    <div class="box-inner">
-                                      <div class="product-detail-bnt"><a class="button detail-bnt" type="button"><span>Quick View</span></a></div>
-                                      <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="item-info">
-                                <div class="info-inner">
-                                  <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">Retis lapen casen</a> </div>
-                                  <div class="item-content">
-                                    <div class="rating">
-                                      <div class="ratings">
-                                        <div class="rating-box">
-                                          <div class="rating" style="width:80%"></div>
-                                        </div>
-                                        <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                      </div>
-                                    </div>
-                                    <div class="item-price">
-                                      <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">$125.00</span> </span> </div>
-                                    </div>
-									<div class="add_cart">
-                                        <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                      </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-          <!-- End Item --> 
-          
-          <!-- Item -->
-          <div class="item">
-                            <div class="item-inner">
-                              <div class="item-img">
-                                <div class="item-img-info"><a href="product-detail.html" title="Retis lapen casen" class="product-image">{!! Html::image('web/products-images/p15.jpg','Flavours Store')!!}</a>
-                                  <div class="new-label new-top-left">New</div>
-                                  <div class="item-box-hover">
-                                    <div class="box-inner">
-                                      <div class="product-detail-bnt"><a class="button detail-bnt" type="button"><span>Quick View</span></a></div>
-                                      <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="item-info">
-                                <div class="info-inner">
-                                  <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">Retis lapen casen</a> </div>
-                                  <div class="item-content">
-                                    <div class="rating">
-                                      <div class="ratings">
-                                        <div class="rating-box">
-                                          <div class="rating" style="width:80%"></div>
-                                        </div>
-                                        <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                      </div>
-                                    </div>
-                                    <div class="item-price">
-                                      <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">$125.00</span> </span> </div>
-                                    </div>
-									<div class="add_cart">
-                                        <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                      </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-          <!-- End Item --> 
-        </div>
-                </div>
-              </div>
-            </div>
-            <!-- end related product -->
-            
-          </div>
-          <!-- end related product -->
         </div>
         <!--box-additional-->
         <!--product-view-->

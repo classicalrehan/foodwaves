@@ -12,6 +12,7 @@ use Response;
 use DB;
 use Auth;
 use Hash;
+use URL;
 use App\Product;
 use App\Category;
 use App\Http\Requests;
@@ -80,6 +81,8 @@ class ProductController extends Controller
 		
 		if($id > 0){
 			
+
+
 			if(count($request->image)>0){
 				foreach($request->image as $key=>$value){
 					$data =array(
@@ -371,9 +374,9 @@ class ProductController extends Controller
 				$condition = array('item_id'=>$cart->id,'type'=>'product');
 				$image = DB::table('images')->where($condition)->get();
 				if(count($image)>0){
-					$item['image'] = $image[0]->name;	
+					$item['images'] = $image[0]->name;
 				}else{
-					$item['image'] ='';
+					$item['images'] ='';
 				}
 				$price += ($cart->price) * ($cart->qty);
 				$qty += $cart->qty;
@@ -385,7 +388,7 @@ class ProductController extends Controller
 				$item['price']=$cart->price;
 				$item['qty']=$cart->qty;
 				$item['unitPrice']=($cart->price) * ($cart->qty);
-				$item['image']= $this->url->to('/web/products-images/'.$image[0]->name);
+				$item['image']= $this->url->to('/imageupload/server/product/files/'.$image[0]->name);
 				
 				$items[]= $item;	
 			}
@@ -410,6 +413,10 @@ class ProductController extends Controller
        
 		$product = Product::find($id);
 		
+		/*echo "<pre>";
+			print_r($images);
+		echo "</pre>";
+		die;*/
 		return view('web.product.productdetails',compact('product','cart','images'));
 	}
 	/**
@@ -422,19 +429,23 @@ class ProductController extends Controller
 		$parent = $request->Input("parent-cat");
 		$child = $request->Input("child-cat");
 		$product = $request->Input("product");
+
+		$query = DB::table('category as c1');
+        $query->leftJoin('category as c2', 'c1.is_parent', '=', 'c2.id');
+        $query->leftJoin('product_category as pc', 'pc.cat_id', '=', 'c1.id');
+        $query->leftJoin('product as p', 'pc.pro_id', '=', 'p.id');
+			
+		if(!empty($parent)){
+			$query->where('c2.slug',$parent);
+		}
+		if(!empty($child)){
+			$query->where('c1.slug',$child);
+		}
+		$data = $query->get();
+		
 		$categorySelection = array("child"=>ucfirst($child),"parent"=>ucfirst($parent));
 
-		if($parent!=""){
-			$data = DB::table('category as c1')
-            ->leftJoin('category as c2', 'c1.is_parent', '=', 'c2.id')
-            ->leftJoin('product_category as pc', 'pc.cat_id', '=', 'c1.id')
-            ->leftJoin('product as p', 'pc.pro_id', '=', 'p.id')
-			->where('c2.slug',$parent)
-			->where('c1.slug',$child)
-			->get();
-		}else{
-			$data = Product::get();
-		}
+		
 
 		$product =array();
 		foreach($data as $pro){
@@ -456,7 +467,14 @@ class ProductController extends Controller
 		}
 		$cart = $this->getCartItem();
 
-       	return view('web.product.products',compact('product','cart','categorySelection'));
+		$shoppingOptions = $this->categoryService->getFilterCategory($parent);
+		
+
+		/*echo "<pre>";
+			print_r($shoppingOptions);
+		echo "</pre>";
+		die;*/
+       	return view('web.product.products',compact('product','cart','categorySelection','shoppingOptions'));
     }
 	/**
      * Display a listing of the resource.
@@ -477,15 +495,18 @@ class ProductController extends Controller
 			$condition = array('item_id'=>$pro['id'],'type'=>'product');
 			$image = DB::table('images')->where($condition)->get();
 			if(count($image)>0){
-				$item['image'] = $image[0]->name;	
+				$item['images'] =  $this->url->to('/imageupload/server/product/files/').$image[0]->name;	
 			}else{
-				$item['image'] ='';
+				$item['images'] ='';
 			}
 			
 			$product[]= $item;
 		}
 		
+
 		 $cart = $this->getCartItem();
+
+		
 		 return view('web.product.checkout',compact('product','cart'));
 	 }
 	 /**

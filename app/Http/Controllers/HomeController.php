@@ -41,7 +41,8 @@ class HomeController extends Controller
 		foreach($data as $cat){
 			$item = array();
 			$item['id'] = $cat['id'];
-			$item['name'] = $cat['name'];
+            $item['name'] = $cat['name'];
+			$item['slug'] = $cat['slug'];
 			
 			$condition = array('item_id'=>$cat['id'],'type'=>'category');
 			$image = DB::table('images')->where($condition)->get();
